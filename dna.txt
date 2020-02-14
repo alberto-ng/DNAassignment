@@ -1,8 +1,8 @@
-A
-C
-T
-G
-a
-c
-t
-g
+Actgact
+Ctgactga
+Tgact
+Gactgact
+actgat
+cgt
+tatat
+gcat
