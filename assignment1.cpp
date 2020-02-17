@@ -1,4 +1,6 @@
 # include <iostream>
+# include <ios>
+# include <iomanip>
 # include <fstream>
 # include <cmath>
 
@@ -58,14 +60,14 @@ int main(int argc, char** argv){
         probC = (((double)countC)/sumChar) * 100;
         probT = (((double)countT)/sumChar) * 100;
 
-        cout << "\nProbability of A: " << probA << "%" << endl;
-        cout << "Probability of C: " << probC << "%" << endl;
-        cout << "Probability of T: " << probT << "%" << endl;
-        cout << "Probability of G: " << probG << "%" << endl;
+        cout << "\nProbability of A: " << fixed << setprecision(2) << probA << "%" << endl;
+        cout << "Probability of C: " << fixed << setprecision(2) << probC << "%" << endl;
+        cout << "Probability of T: " << fixed << setprecision(2) << probT << "%" << endl;
+        cout << "Probability of G: " << fixed << setprecision(2) << probG << "%" << endl;
 
 
         mean = ((double)sumChar)/sumLine;
-        cout << "\nMean (sum/lines): " << mean << endl;
+        cout << "\nMean (sum/lines): " << fixed << setprecision(2) << mean << endl;
 
         statFile >> currLine;
         while (!statFile.fail()){
@@ -83,8 +85,8 @@ int main(int argc, char** argv){
         variance = sumForVar/sumLine;
         stdDev = sqrt(variance);
 
-        cout << "Variance: " << variance << endl;
-        cout << "Standard Deviation: " << stdDev << "\n" << endl;
+        cout << "Variance: " << fixed << setprecision(2) << variance << endl;
+        cout << "Standard Deviation: " << fixed << setprecision(2) << stdDev << "\n" << endl;
 
 
         testFile.close();
