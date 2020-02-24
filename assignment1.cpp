@@ -12,6 +12,7 @@ int main(int argc, char** argv){
         // initiating/assigning variables that are needed for the program
         ifstream testFile;
         ifstream statFile;
+        ofstream outFile;
         string currLine;
         char currLetter;
         char nextLetter;
@@ -29,7 +30,7 @@ int main(int argc, char** argv){
         int countAG = 0;
         int countCA = 0;
         int countCT = 0;
-        int countCG= 0;
+        int countCG = 0;
         int countCC = 0;
         int countTA = 0;
         int countTC = 0;
@@ -52,6 +53,9 @@ int main(int argc, char** argv){
         testFile.open(argv[1]);
         statFile.open(argv[1]);
 
+        // opening the file to write to
+        outFile.open("albertoNg.txt");
+
         // store first line to currLine
         testFile >> currLine;
 
@@ -61,7 +65,7 @@ int main(int argc, char** argv){
             sumLine += 1;
 
             // showing the current line being analyzed to consel
-            cout << currLine << endl;
+            outFile << currLine << endl;
 
             // for loop to store count of letters, each A, C, T, G and as well as each bigram
             for (int i = 0; i < currLine.length(); ++i){
@@ -165,8 +169,8 @@ int main(int argc, char** argv){
         }
 
         // printing sumChar and sumLine to concel
-        cout << "\nnumber of char(sum): " << sumChar << endl;
-        cout << "number of line: " << sumLine << endl;
+        outFile << "\nnumber of char(sum): " << sumChar << endl;
+        outFile << "number of line: " << sumLine << endl;
 
         // calculating probability of A, G, C, T
         probA = (((double)countA)/sumChar) * 100;
@@ -199,42 +203,42 @@ int main(int argc, char** argv){
         probTT = (((double)countTT)/totalBigram) * 100;
 
         // printing probaility of A, C, T, G in %
-        cout << "\nProbability of A: " << fixed << setprecision(2) << probA << "%" << endl;
-        cout << "Probability of C: " << fixed << setprecision(2) << probC << "%" << endl;
-        cout << "Probability of T: " << fixed << setprecision(2) << probT << "%" << endl;
-        cout << "Probability of G: " << fixed << setprecision(2) << probG << "%" << endl;
+        outFile << "\nProbability of A: " << fixed << setprecision(2) << probA << "%" << endl;
+        outFile << "Probability of C: " << fixed << setprecision(2) << probC << "%" << endl;
+        outFile << "Probability of T: " << fixed << setprecision(2) << probT << "%" << endl;
+        outFile << "Probability of G: " << fixed << setprecision(2) << probG << "%" << endl;
 
         // printing probability of bigram starting with A in %
-        cout << "\nProbability of AX bigram: " << fixed << setprecision(2) << probAA +  probAC + probAT + probAG << "%" << endl;
-        cout << "Probability of AA: " << fixed << setprecision(2) << probAA << "%" << endl;
-        cout << "Probability of AC: " << fixed << setprecision(2) << probAC << "%" << endl;
-        cout << "Probability of AT: " << fixed << setprecision(2) << probAT << "%" << endl;
-        cout << "Probability of AG: " << fixed << setprecision(2) << probAG << "%" << endl;
+        outFile << "\nProbability of AX bigram: " << fixed << setprecision(2) << probAA +  probAC + probAT + probAG << "%" << endl;
+        outFile << "Probability of AA: " << fixed << setprecision(2) << probAA << "%" << endl;
+        outFile << "Probability of AC: " << fixed << setprecision(2) << probAC << "%" << endl;
+        outFile << "Probability of AT: " << fixed << setprecision(2) << probAT << "%" << endl;
+        outFile << "Probability of AG: " << fixed << setprecision(2) << probAG << "%" << endl;
 
         // printing probability of bigram starting with C in %
-        cout << "\nProbability of CX bigram: " << fixed << setprecision(2) << probCA +  probCC + probCT + probCG << "%" << endl;
-        cout << "Probability of CA: " << fixed << setprecision(2) << probCA << "%" << endl;
-        cout << "Probability of CC: " << fixed << setprecision(2) << probCC << "%" << endl;
-        cout << "Probability of CT: " << fixed << setprecision(2) << probCT << "%" << endl;
-        cout << "Probability of CG: " << fixed << setprecision(2) << probCG << "%" << endl;
+        outFile << "\nProbability of CX bigram: " << fixed << setprecision(2) << probCA +  probCC + probCT + probCG << "%" << endl;
+        outFile << "Probability of CA: " << fixed << setprecision(2) << probCA << "%" << endl;
+        outFile << "Probability of CC: " << fixed << setprecision(2) << probCC << "%" << endl;
+        outFile << "Probability of CT: " << fixed << setprecision(2) << probCT << "%" << endl;
+        outFile << "Probability of CG: " << fixed << setprecision(2) << probCG << "%" << endl;
 
         // printing probability of bigram starting with T in %
-        cout << "\nProbability of TX bigram: " << fixed << setprecision(2) << probTA +  probTC + probTT + probTG << "%" << endl;
-        cout << "Probability of TA: " << fixed << setprecision(2) << probTA << "%" << endl;
-        cout << "Probability of TC: " << fixed << setprecision(2) << probTC << "%" << endl;
-        cout << "Probability of TT: " << fixed << setprecision(2) << probTT << "%" << endl;
-        cout << "Probability of TG: " << fixed << setprecision(2) << probTG << "%" << endl;
+        outFile << "\nProbability of TX bigram: " << fixed << setprecision(2) << probTA +  probTC + probTT + probTG << "%" << endl;
+        outFile << "Probability of TA: " << fixed << setprecision(2) << probTA << "%" << endl;
+        outFile << "Probability of TC: " << fixed << setprecision(2) << probTC << "%" << endl;
+        outFile << "Probability of TT: " << fixed << setprecision(2) << probTT << "%" << endl;
+        outFile << "Probability of TG: " << fixed << setprecision(2) << probTG << "%" << endl;
 
         // printing probability of bigram starting with G in %
-        cout << "\nProbability of GX bigram: " << fixed << setprecision(2) << probGA +  probGC + probGT + probGG << "%" << endl;
-        cout << "Probability of GA: " << fixed << setprecision(2) << probGA << "%" << endl;
-        cout << "Probability of GC: " << fixed << setprecision(2) << probGC << "%" << endl;
-        cout << "Probability of GT: " << fixed << setprecision(2) << probGT << "%" << endl;
-        cout << "Probability of GG: " << fixed << setprecision(2) << probGG << "%" << endl;
+        outFile << "\nProbability of GX bigram: " << fixed << setprecision(2) << probGA +  probGC + probGT + probGG << "%" << endl;
+        outFile << "Probability of GA: " << fixed << setprecision(2) << probGA << "%" << endl;
+        outFile << "Probability of GC: " << fixed << setprecision(2) << probGC << "%" << endl;
+        outFile << "Probability of GT: " << fixed << setprecision(2) << probGT << "%" << endl;
+        outFile << "Probability of GG: " << fixed << setprecision(2) << probGG << "%" << endl;
 
         // calculating mean and printing to concel
         mean = ((double)sumChar)/sumLine;
-        cout << "\nMean (sum/lines): " << fixed << setprecision(2) << mean << endl;
+        outFile << "\nMean (sum/lines): " << fixed << setprecision(2) << mean << endl;
 
         // store first line to currLine
         statFile >> currLine;
@@ -262,11 +266,28 @@ int main(int argc, char** argv){
         stdDev = sqrt(variance);
 
         // printing variance and std deviation in %
-        cout << "Variance: " << fixed << setprecision(2) << variance << endl;
-        cout << "Standard Deviation: " << fixed << setprecision(2) << stdDev << "\n" << endl;
+        outFile << "Variance: " << fixed << setprecision(2) << variance << endl;
+        outFile << "Standard Deviation: " << fixed << setprecision(2) << stdDev << "\n" << endl;
 
-        // closing the two files
+        // closing the two in files
         testFile.close();
         statFile.close();
+
+        // closing the out file
+        outFile.close();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     }
 }

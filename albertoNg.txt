@@ -1,0 +1,45 @@
+cgtagcatgctagctagctagc
+tgatcgatgctacga
+cgatgctgactgagctat
+cgcgcgggattaaataacccca
+gcgctactacttgcgcgctata
+cgtagcatgctagctagctagcat
+gactcgtagctctcg
+cgtagcatgctagctagctagcatactcga
+
+number of char(sum): 168
+number of line: 8
+
+Probability of A: 23.81%
+Probability of C: 27.38%
+Probability of T: 23.81%
+Probability of G: 25.00%
+
+Probability of AX bigram: 22.50%
+Probability of AA: 1.88%
+Probability of AC: 4.38%
+Probability of AT: 7.50%
+Probability of AG: 8.75%
+
+Probability of CX bigram: 28.12%
+Probability of CA: 3.75%
+Probability of CC: 1.88%
+Probability of CT: 13.12%
+Probability of CG: 9.38%
+
+Probability of TX bigram: 23.75%
+Probability of TA: 13.75%
+Probability of TC: 3.12%
+Probability of TT: 1.25%
+Probability of TG: 5.62%
+
+Probability of GX bigram: 25.62%
+Probability of GA: 5.62%
+Probability of GC: 16.25%
+Probability of GT: 2.50%
+Probability of GG: 1.25%
+
+Mean (sum/lines): 21.00
+Variance: 21.75
+Standard Deviation: 4.66
+
