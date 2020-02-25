@@ -48,6 +48,7 @@ int main(int argc, char** argv){
         double probCA, probCC, probCT, probCG;
         double probGA, probGC, probGT, probGG;
         double probTA, probTC, probTT, probTG;
+        double a, b, c, d;
 
         // open text file twice. One for going through the file, one for stats
         testFile.open(argv[1]);
@@ -273,9 +274,16 @@ int main(int argc, char** argv){
         testFile.close();
         statFile.close();
 
+
+        // to print 1000 lines
+        for (int i = 0; i < 1000; ++i){
+            a = ((double)rand()/RAND_MAX);
+            b = ((double)rand()/RAND_MAX);
+            cout << a << " and " << b << endl;
+        }
+
         // closing the out file
         outFile.close();
-
 
 
 

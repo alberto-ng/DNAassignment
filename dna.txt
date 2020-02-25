@@ -1,8 +1,5 @@
-cgtagcatgctagctagctagc
-tgatcgatgctacga
-cgatgctgactgagctat
-cgcgcgggattaaataacccca
-gcgctactacttgcgcgctata
-cgtagcatgctagctagctagcat
-gactcgtagctctcg
-cgtagcatgctagctagctagcatactcga
+AACCTTGG
+ACATAG
+CACTCG
+GAGCGT
+TATCTG
