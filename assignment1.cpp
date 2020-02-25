@@ -60,7 +60,7 @@ int main(int argc, char** argv){
         outFile.open("albertoNg.out");
 
         // header
-        outFile << "Name: Alberto Ng" << "\nStudent ID: 2298866" << "\netc\n" << endl;
+        outFile << "Name: Alberto Ng" << "\nStudent ID: 2298866" << "\nCPSC350-02\n" << endl;
 
         // check if user wants to quit
         while (word != "q"){
