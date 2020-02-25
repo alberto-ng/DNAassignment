@@ -14,6 +14,7 @@ int main(int argc, char** argv){
         ifstream statFile;
         ofstream outFile;
         string currLine;
+        string newLine;
         char currLetter;
         char nextLetter;
         int sumChar = 0;
@@ -49,7 +50,7 @@ int main(int argc, char** argv){
         double probCA, probCC, probCT, probCG;
         double probGA, probGC, probGT, probGG;
         double probTA, probTC, probTT, probTG;
-        double a, b, c, d;
+        double a, b, c, d, random;
 
         // open text file twice. One for going through the file, one for stats
         testFile.open(argv[1]);
@@ -60,6 +61,8 @@ int main(int argc, char** argv){
 
         // store first line to currLine
         testFile >> currLine;
+
+        outFile << "Name: Alberto Ng" << "\nStudent ID: 2298866" << "\netc\n" << endl;
 
         // while loop to go through the whole txt file until fail
         while (!testFile.fail()){
@@ -277,7 +280,10 @@ int main(int argc, char** argv){
 
 
         // to print 1000 lines
-        for (int i = 0; i < 10; ++i){
+        for (int i = 0; i < 1000; ++i){
+
+            newLine = "";
+
             // getting 2 random number
             a = ((double)rand()/RAND_MAX);
             b = ((double)rand()/RAND_MAX);
@@ -295,22 +301,28 @@ int main(int argc, char** argv){
                 d -= remainder(d, 1);
             }
 
-            cout << c << " " << d << endl;
+            for (int i = 0; i < d; ++i){
+                random = ((double)rand()/RAND_MAX) * 100;
+
+                if (random <= (probA + probC + probG + probT) && random > (probA + probC + probG)){
+                    newLine += "T";
+                }
+                else if (random <= (probA + probC + probG) && random > (probA + probC)){
+                    newLine += "G";
+                }
+                else if (random <= (probA + probC) && random > (probA)){
+                    newLine += "C";
+                }
+                else {
+                    newLine += "A";
+                }
+            }
+
+            outFile << newLine << endl;
         }
 
         // closing the out file
         outFile.close();
-
-
-
-
-
-
-
-
-
-
-
 
 
     }
