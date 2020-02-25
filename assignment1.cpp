@@ -59,10 +59,12 @@ int main(int argc, char** argv){
         // opening the file to write to
         outFile.open("albertoNg.out");
 
+        // header
         outFile << "Name: Alberto Ng" << "\nStudent ID: 2298866" << "\netc\n" << endl;
 
-
+        // check if user wants to quit
         while (word != "q"){
+            // resetting all the variables before program run on new file
             countA = 0;
             countG = 0;
             countC = 0;
@@ -89,23 +91,77 @@ int main(int argc, char** argv){
             charInLine = 0;
             sumForVar = 0.0;
 
+            // check if it is the first time this program is run
             if (first == "yes"){
                 // open text file twice. One for going through the file, one for stats
                 testFile.open(argv[1]);
                 statFile.open(argv[1]);
+
+                // setting fileName to what user put
                 fileName = argv[1];
-                outFile << "\nCURRENT FILE: " << argv[1] << "\n" << endl;
+
+                // check if the file can be opened
+                if (testFile.fail()){
+                    // while fail, kept prompting unil user quits or enter a valid file
+                    while (testFile.fail()){
+                        cout << "\nFailed.\n1. Enter q to quit. \n2. Enter next .txt file \n\"EXAMPLE: dna.txt\"" << endl;
+                        cin >> word;
+
+                        // exit out of while(testFile.fail()) loop if user wants to quit
+                        if (word == "q"){
+                            break;
+                        }
+
+                        // kept trying to open file until success
+                        testFile.open(word);
+                        statFile.open(word);
+                    }
+
+                    // exit out of while(word != "q") loop if user wants to quit
+                    if (word == "q"){
+                        break;
+                    }
+
+                    // print out the current file to the .out file
+                    outFile << "\nCURRENT FILE: " << word << "\n" << endl;
+                }
+                // print out the current file to the .out file if the file can be opened
+                else {
+                    outFile << "\nCURRENT FILE: " << argv[1] << "\n" << endl;
+                }
+                // letting the program know it is no longer the first time
                 first = "no";
             }
+            // else statement will execute when not the first time
             else{
+                // open text file twice. One for going through the file, one for stats
                 testFile.open(word);
                 statFile.open(word);
-                if (testFile.fail()){
-                    break;
+
+                // while fail, kept prompting unil user quits or enter a valid file
+                while (testFile.fail()){
+                    cout << "\nFailed.\n1. Enter q to quit. \n2. Enter next .txt file \n\"EXAMPLE: dna.txt\"" << endl;
+                    cin >> word;
+
+                    // if user wants to quit, exit out of while (testFile.fail()) loop
+                    if (word == "q"){
+                        break;
+                    }
+
+                    testFile.open(word);
+                    statFile.open(word);
                 }
-                fileName = word;
-                outFile << "\nCURRENT FILE: " << word << "\n" << endl;
             }
+
+            // exit out of while(word != "q") loop if user wants to quit
+            if (word == "q"){
+                break;
+            }
+
+            // setting fileName to user input word
+            fileName = word;
+            // printing current file
+            outFile << "\nCURRENT FILE: " << word << "\n" << endl;
 
             // store first line to currLine
             testFile >> currLine;
@@ -121,7 +177,6 @@ int main(int argc, char** argv){
                 for (int i = 0; i < currLine.length(); ++i){
                     // each time a loop execute means a letter exist so add 1 to sunChar
                     sumChar += 1;
-
                     // turn the currLetter to lower case to make sure upper case and lower case will both be fine
                     currLetter = tolower(currLine[i]);
 
@@ -157,7 +212,6 @@ int main(int argc, char** argv){
                             countAG += 1;
                         }
                     }
-
                     // if statement to count T
                     else if (currLetter == 't'){
                         countT += 1;
@@ -175,7 +229,6 @@ int main(int argc, char** argv){
                             countTG += 1;
                         }
                     }
-
                     // if statement to count G
                     else if (currLetter == 'g'){
                         countG += 1;
@@ -193,7 +246,6 @@ int main(int argc, char** argv){
                             countGG += 1;
                         }
                     }
-
                     // if statement to count C
                     else if (currLetter == 'c'){
                         countC += 1;
@@ -325,8 +377,8 @@ int main(int argc, char** argv){
 
 
             // to print 1000 lines
-            for (int i = 0; i < 10; ++i){
-
+            for (int i = 0; i < 1000; ++i){
+                // resetting newLine every time loop execute
                 newLine = "";
 
                 // getting 2 random number
@@ -346,27 +398,36 @@ int main(int argc, char** argv){
                     d -= remainder(d, 1);
                 }
 
+                // for loop saving char to newLine
                 for (int i = 0; i < d; ++i){
+                    // getting a random number
                     random = ((double)rand()/RAND_MAX) * 100;
 
+                    // if random falls between (probA + probC + probG) to 1, add T to newLine
                     if (random <= (probA + probC + probG + probT) && random > (probA + probC + probG)){
                         newLine += "T";
                     }
+                    // if random falls between (probA + probC) to (probA + probC + probG), add G to newLine
                     else if (random <= (probA + probC + probG) && random > (probA + probC)){
                         newLine += "G";
                     }
+                    // if random falls between (probA) to (probA + probC), add C to newLine
                     else if (random <= (probA + probC) && random > (probA)){
                         newLine += "C";
                     }
+                    // if random falls between 0 to (probA), add A to newLine
                     else {
                         newLine += "A";
                     }
                 }
 
+                // print newLine to outFile
                 outFile << newLine << endl;
             }
-        cout << "\nEnd of file. Enter q if done. \nEnter next .txt file \n\"EXAMPLE: dna.txt\"" << endl;
-        cin >> word;
+
+            // promt user with options
+            cout << "\nEnd of file. \n1. Enter q if done. \n2. Enter next .txt file \n\"EXAMPLE: dna.txt\"" << endl;
+            cin >> word;
         }
         // closing the out file
         outFile.close();
