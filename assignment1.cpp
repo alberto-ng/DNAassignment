@@ -41,6 +41,7 @@ int main(int argc, char** argv){
         int countGT = 0;
         int countGG = 0;
         double sumForVar = 0.0;
+        double pi = 3.14159;
         double differenceSqr;
         double mean, variance, stdDev;
         double probA, probG, probC, probT;
@@ -276,10 +277,25 @@ int main(int argc, char** argv){
 
 
         // to print 1000 lines
-        for (int i = 0; i < 1000; ++i){
+        for (int i = 0; i < 10; ++i){
+            // getting 2 random number
             a = ((double)rand()/RAND_MAX);
             b = ((double)rand()/RAND_MAX);
-            cout << a << " and " << b << endl;
+
+            // getting c and d with equation given
+            c = (sqrt((-2) * log(a))) * (cos(2 * pi * b));
+            d = (stdDev * c) + mean;
+
+            // if statement to get d to a whole number if the value in decimal is above 0.5
+            if (remainder(d, 1) > 0.5){
+                d += (1 - remainder(d, 1));
+            }
+            // else statement to get d to a whole number if the value in decimal is below 0.5
+            else {
+                d -= remainder(d, 1);
+            }
+
+            cout << c << " " << d << endl;
         }
 
         // closing the out file
