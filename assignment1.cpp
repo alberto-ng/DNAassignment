@@ -151,17 +151,17 @@ int main(int argc, char** argv){
                     testFile.open(word);
                     statFile.open(word);
                 }
-            }
 
-            // exit out of while(word != "q") loop if user wants to quit
-            if (word == "q"){
-                break;
-            }
+                // exit out of while(word != "q") loop if user wants to quit
+                if (word == "q"){
+                    break;
+                }
 
-            // setting fileName to user input word
-            fileName = word;
-            // printing current file
-            outFile << "\nCURRENT FILE: " << word << "\n" << endl;
+                // setting fileName to user input word
+                fileName = word;
+                // printing current file
+                outFile << "\nCURRENT FILE: " << word << "\n" << endl;
+            }
 
             // store first line to currLine
             testFile >> currLine;
