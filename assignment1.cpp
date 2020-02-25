@@ -55,7 +55,7 @@ int main(int argc, char** argv){
         statFile.open(argv[1]);
 
         // opening the file to write to
-        outFile.open("albertoNg.txt");
+        outFile.open("albertoNg.out");
 
         // store first line to currLine
         testFile >> currLine;

@@ -1,0 +1,42 @@
+AACCTTGG
+ACATAG
+CACTCG
+GAGCGT
+TATCTG
+
+number of char(sum): 32
+number of line: 5
+
+Probability of A: 25.00%
+Probability of C: 25.00%
+Probability of T: 25.00%
+Probability of G: 25.00%
+
+Probability of AX bigram: 29.63%
+Probability of AA: 3.70%
+Probability of AC: 11.11%
+Probability of AT: 7.41%
+Probability of AG: 7.41%
+
+Probability of CX bigram: 29.63%
+Probability of CA: 7.41%
+Probability of CC: 3.70%
+Probability of CT: 11.11%
+Probability of CG: 7.41%
+
+Probability of TX bigram: 25.93%
+Probability of TA: 7.41%
+Probability of TC: 7.41%
+Probability of TT: 3.70%
+Probability of TG: 7.41%
+
+Probability of GX bigram: 14.81%
+Probability of GA: 3.70%
+Probability of GC: 3.70%
+Probability of GT: 3.70%
+Probability of GG: 3.70%
+
+Mean (sum/lines): 6.40
+Variance: 0.64
+Standard Deviation: 0.80
+
